@@ -1,0 +1,1 @@
+﻿Scaffold-DBcontext "Server=192.168.178.101;Database=RpgGame;persist security info=True;user=TestUser;password=1234;" Microsoft.EntityFrameworkCore.SqlServer -verbose -o Models -force
