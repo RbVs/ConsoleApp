@@ -6,7 +6,7 @@ namespace ConsoleApp.Controller
     internal class RegisterService : GameUser
     {
         /// <summary>
-        /// register new User
+        ///     register new User
         /// </summary>
         /// <param name="newUser">new user entity</param>
         /// <returns></returns>

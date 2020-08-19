@@ -8,7 +8,7 @@ namespace ConsoleApp.Controller
     internal class LoginService : GameUser
     {
         /// <summary>
-        /// Find user by username and check if password is equal to password in db
+        ///     Find user by username and check if password is equal to password in db
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -19,13 +19,12 @@ namespace ConsoleApp.Controller
             var user = await dbContext.GameUser.FirstOrDefaultAsync(c => c.Name.Equals(username));
             if (user.Password.Equals(password))
                 return user;
-            else
-                return null;
+            return null;
         }
 
 
         /// <summary>
-        /// Find user by username
+        ///     Find user by username
         /// </summary>
         /// <param name="username">username from user input</param>
         /// <returns></returns>
@@ -39,7 +38,7 @@ namespace ConsoleApp.Controller
 
 
         /// <summary>
-        /// Get all user in database
+        ///     Get all user in database
         /// </summary>
         /// <returns></returns>
         public static async Task<List<GameUser>> GameUserList()
@@ -48,6 +47,5 @@ namespace ConsoleApp.Controller
             var result = await dbContext.GameUser.ToListAsync();
             return result;
         }
-       
     }
 }

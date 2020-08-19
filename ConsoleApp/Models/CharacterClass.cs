@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ConsoleApp.Models
 {
-    public partial class CharacterClass
+    public class CharacterClass
     {
         public CharacterClass()
         {

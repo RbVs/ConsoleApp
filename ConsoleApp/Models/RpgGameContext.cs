@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp.Models
 {
-    public partial class RpgGameContext : DbContext
+    public class RpgGameContext : DbContext
     {
         public RpgGameContext()
         {
@@ -22,9 +20,8 @@ namespace ConsoleApp.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=192.168.178.101;Database=RpgGame;persist security info=True;user=TestUser;password=1234;");
-            }
+                optionsBuilder.UseSqlServer(
+                    "Server=192.168.178.101;Database=RpgGame;persist security info=True;user=TestUser;password=1234;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -89,10 +86,6 @@ namespace ConsoleApp.Models
                     .IsRequired()
                     .HasMaxLength(50);
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

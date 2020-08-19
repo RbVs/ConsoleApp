@@ -11,7 +11,7 @@ namespace ConsoleApp.Shared
 
         public static string Read()
         {
-           return Console.ReadLine();
+            return Console.ReadLine();
         }
 
         public static void Clear()

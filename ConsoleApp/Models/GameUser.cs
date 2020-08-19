@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Models
 {
-    public partial class GameUser
+    public class GameUser
     {
         public GameUser()
         {

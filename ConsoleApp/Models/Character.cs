@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ConsoleApp.Models
+﻿namespace ConsoleApp.Models
 {
-    public partial class Character
+    public class Character
     {
         public int Id { get; set; }
         public string Name { get; set; }

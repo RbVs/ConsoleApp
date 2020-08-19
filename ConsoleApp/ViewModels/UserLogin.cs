@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ConsoleApp.Controller;
 using ConsoleApp.Models;
 using static ConsoleApp.Shared.CustomConsole;
@@ -11,7 +12,7 @@ namespace ConsoleApp.ViewModels
         private static string _password;
 
         /// <summary>
-        /// Check if user exists in database, if doesn´t, force user to register
+        ///     Check if user exists in database, if doesn´t, force user to register
         /// </summary>
         /// <returns></returns>
         public static async Task<bool> Login()
@@ -22,13 +23,8 @@ namespace ConsoleApp.ViewModels
             var isRegistered = await CheckUserIsRegistered();
             //if not, ask user to register
             if (!isRegistered)
-            {
-               return await AskUserToRegister();
-            }
-            else
-            {
-               return await LoginUserAsync(_username, _password);
-            }
+                return await AskUserToRegister();
+            return await LoginUserAsync(_username, _password);
         }
 
         private static async Task<bool> LoginUserAsync(string username, string password)
@@ -37,7 +33,7 @@ namespace ConsoleApp.ViewModels
 
             Program.CurrentUser = user;
 
-            if(user != null)
+            if (user != null)
             {
                 Clear();
                 WelcomeUser();
@@ -46,7 +42,6 @@ namespace ConsoleApp.ViewModels
             }
 
             return false;
-
         }
 
         private static async Task<bool> AskUserToRegister()
@@ -57,14 +52,14 @@ namespace ConsoleApp.ViewModels
             {
                 Clear();
                 GetUserDetails();
-                
-                var newUser = new GameUser()
+
+                var newUser = new GameUser
                 {
                     Name = _username,
-                    Password = _password,
+                    Password = _password
                 };
 
-                Program.CurrentUser =  await RegisterService.Register(newUser);
+                Program.CurrentUser = await RegisterService.Register(newUser);
 
                 Clear();
                 WelcomeUser();
@@ -78,6 +73,7 @@ namespace ConsoleApp.ViewModels
         private static void WelcomeUser()
         {
             Write($"Hi {Program.CurrentUser.Name}!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Write(" Welcome to this awesome console game! I really hope you enjoy it!");
         }
 
